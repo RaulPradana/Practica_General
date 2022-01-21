@@ -14,7 +14,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ## Instalamos el paquete, la librería y leemos los datos
 
 ```{r}
-install.packages("palmerpenguins")
+#install.packages("palmerpenguins")
 library(palmerpenguins)
 data(package = 'palmerpenguins')
 ```
@@ -36,7 +36,7 @@ summary(penguins)
 ## 2) Un gráfico de barras que represente el número de individuos muestreados de cada especie en cada isla, representando las especies en diferentes colores (chinstrap -- morado, gentoo -- azul, adelie -- naranja).
 
 ```{r}
-install.packages("ggplot2")
+#install.packages("ggplot2")
 library(ggplot2)
 
 colores <- c("orange", "purple", "blue")
@@ -45,8 +45,6 @@ ggplot(data = penguins) +
   geom_bar(aes(x = island, fill = species)) +
   scale_fill_manual(values = colores)
 ```
-
-![](Practica_General/pinguinos_por_isla)
 
 ### ¿Qué especie se ha muestreado en las tres islas?
 
@@ -63,8 +61,6 @@ ggplot(data = penguins) +
   geom_boxplot(aes(y = body_mass_g, fill = sex)) +
   facet_grid(rows = vars(species))
 ```
-
-![](Practica_General/tama%C3%B1o_por_especie_y_sexo)
 
 ### ¿Qué especie tiene mayor tamaño?
 
