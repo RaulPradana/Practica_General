@@ -1,0 +1,75 @@
+---
+title: "Practica General"
+author: "Raúl J. Pradana Yuste"
+date: "21/1/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Practica General - Penguins
+
+## Instalamos el paquete, la librería y leemos los datos
+
+```{r}
+install.packages("palmerpenguins")
+library(palmerpenguins)
+data(package = 'palmerpenguins')
+```
+
+### Para comprobar las variables y sus nombres
+
+```{r}
+View(penguins)
+```
+
+### Ahora se nos pide:
+
+## 1) Número de individuos totales, masculinos y femeninos por especie. La media, desviación estándar, valor mínimo y máximo de la longitud y profundidad del pico, la longitud de la aleta y el tamaño.
+
+```{r}
+summary(penguins)
+```
+
+## 2) Un gráfico de barras que represente el número de individuos muestreados de cada especie en cada isla, representando las especies en diferentes colores (chinstrap -- morado, gentoo -- azul, adelie -- naranja).
+
+```{r}
+install.packages("ggplot2")
+library(ggplot2)
+
+colores <- c("orange", "purple", "blue")
+
+ggplot(data = penguins) + 
+  geom_bar(aes(x = island, fill = species)) +
+  scale_fill_manual(values = colores)
+```
+
+![](Practica_General/pinguinos_por_isla)
+
+### ¿Qué especie se ha muestreado en las tres islas?
+
+La especie Adelie se ha muestreado en todas las islas.
+
+### ¿Cuántos individuos se han muestreado de la isla Dream?
+
+En la isla Dream se han muestreado 125 pingüinos.
+
+## 3) Un gráfico multipanel de cajas y bigotes del tamaño de los pingüinos según su sexo, donde aparezca un panel para cada especie.
+
+```{r}
+ggplot(data = penguins) +
+  geom_boxplot(aes(y = body_mass_g, fill = sex)) +
+  facet_grid(rows = vars(species))
+```
+
+![](Practica_General/tama%C3%B1o_por_especie_y_sexo)
+
+### ¿Qué especie tiene mayor tamaño?
+
+La especie Gentoo tiene mayor tamaño.
+
+### ¿En qué especie las hembras y los machos tienen un tamaño más similar?
+
+En la especie Chinstrap las diferencias de tamaño entre machos y hembras son menores.
